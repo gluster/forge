@@ -9,10 +9,8 @@ Requires the SQLite3 Python module, and githubpy
 """
 
 import datetime
-import os, os.path, sys, ConfigParser
+import os, os.path, ConfigParser
 import sqlite3
-import requests
-import json
 from github import GitHub
 
 # Enable this to have the results printed to stdout
