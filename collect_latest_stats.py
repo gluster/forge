@@ -57,7 +57,7 @@ for project in config.sections():
 
     # Count the # of commits in the last 24 hours
     now = datetime.datetime.utcnow()
-    yesterday = now + datetime.timedelta(days=-2)
+    yesterday = now + datetime.timedelta(days=-1)
     commits = gh.repos(project).commits.get(since=yesterday)
     commits_count = len(commits)
 
