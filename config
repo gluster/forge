@@ -1,3 +1,4 @@
+[gluster/bigdata]
 [gluster/distaf]
 [gluster/forge]
 [gluster/glupy]
@@ -7,6 +8,7 @@
 [gluster/glusterfs-rackspace-regression-tester]
 [gluster/glusterweb]
 [gluster/planet-gluster]
+[gluster/vagrant]
 [justinclift/glusterflow]
 [pblcache/pblcache]
 [pcuzner/gluster-deploy]
