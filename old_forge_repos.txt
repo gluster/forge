@@ -1,8 +1,6 @@
 Migrated  | Project                                                                                |  GitHub URL
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
    Y      | https://forge.gluster.org/glusterfs-core                                               |  https://github.com/gluster/glusterfs
-   N      | https://forge.gluster.org/hadoop                                                       |
-   N      | https://forge.gluster.org/mod_proxy_gluster                                            |
    N      | https://forge.gluster.org/bareos                                                       |
    N      | https://forge.gluster.org/bugzappers                                                   |
    N      | https://forge.gluster.org/cdc                                                          |
@@ -31,11 +29,11 @@ Migrated  | Project                                                             
    N      | https://forge.gluster.org/glupkgmain-utils                                             |
    Y      | https://forge.gluster.org/gluster-patch-acceptance-tests                               |  https://github.com/gluster/glusterfs-patch-acceptance-tests
    N      | https://forge.gluster.org/gluster-performance-stats-collection-and-analysis-tool       |
-   N      | https://forge.gluster.org/gluster-deploy                                               |
+   Y      | https://forge.gluster.org/gluster-deploy                                               |  https://github.com/pcuzner/gluster-deploy
    N      | https://forge.gluster.org/gluster-site                                                 |  -- Do we need to migrate this?
    Y      | https://forge.gluster.org/glusterflow                                                  |  https://github.com/justinclift/glusterflow
-   N      | https://forge.gluster.org/glusterfs-graphics                                           |
-   N      | https://forge.gluster.org/glusterfs-netgroup-and-export-access-control                 |
+   -      | https://forge.gluster.org/glusterfs-graphics                                           |  -
+   -      | https://forge.gluster.org/glusterfs-netgroup-and-export-access-control                 |  -
    N      | https://forge.gluster.org/glusterfs-java-filesystem                                    |
    N      | https://forge.gluster.org/glusterfs-quota                                              |
    N      | https://forge.gluster.org/glusterfs-rackspace-regression-tester                        |
@@ -45,14 +43,16 @@ Migrated  | Project                                                             
    N      | https://forge.gluster.org/glusterinfo                                                  |
    N      | https://forge.gluster.org/glusteriostat                                                |
    N      | https://forge.gluster.org/gogfapi                                                      |
-   N      | https://forge.gluster.org/goo                                                          |
-   N      | https://forge.gluster.org/gstatus                                                      |
-   N      | https://forge.gluster.org/gtop                                                         |
+   -      | https://forge.gluster.org/goo                                                          | - Doesn't need migrating
+   Y      | https://forge.gluster.org/gstatus                                                      |  https://github.com/pcuzner/gstatus
+   Y      | https://forge.gluster.org/gtop                                                         |  https://github.com/pcuzner/gluster-monitor
+   N      | https://forge.gluster.org/hadoop                                                       |
    N      | https://forge.gluster.org/libgfapi-java-io                                             |
    N      | https://forge.gluster.org/libgfapi-jni                                                 |
    N      | https://forge.gluster.org/libgfapi-python                                              |
    N      | https://forge.gluster.org/libgfapi-ruby                                                |
    N      | https://forge.gluster.org/lsgvt                                                        |
+   N      | https://forge.gluster.org/mod_proxy_gluster                                            |
    N      | https://forge.gluster.org/nagios-monitoring                                            |
    N      | https://forge.gluster.org/ndmp-server                                                  |
    N      | https://forge.gluster.org/negative-lookup                                              |
@@ -73,4 +73,84 @@ Migrated  | Project                                                             
    N      | https://forge.gluster.org/vagrant                                                      |
    N      | https://forge.gluster.org/wireshark                                                    |
    N      | https://forge.gluster.org/xlator-model-checker                                         |
+
+
+## Users to contact ##
+
+Contacted | Project                                                                                | Users
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   -      | https://forge.gluster.org/glusterfs-core                                               |  -
+   Y      | https://forge.gluster.org/bareos                                                       |  Marco van Wieringen
+   Y      | https://forge.gluster.org/bugzappers                                                   |  Niels de Vos
+   Y      | https://forge.gluster.org/cdc                                                          |  Venky
+   -      | https://forge.gluster.org/clang-compiled-glusterfs                          (no repos) |  -
+   Y      | https://forge.gluster.org/cloudstack-gluster                                           |  Niels de Vos
+   -      | https://forge.gluster.org/compliance                                        (no repos) |  -
+   Y      | https://forge.gluster.org/ctdb-ec2                                                     |  Harsha
+   Y      | https://forge.gluster.org/data-classification                                          |  Dan Lambright
+   Y      | https://forge.gluster.org/disperse                                                     |  Xavi
+   Y      | https://forge.gluster.org/distributed-geo-rep                                          |  Venky
+   Y      | https://forge.gluster.org/dockerized-glusterfs                                         |  Harsha
+   Y      | https://forge.gluster.org/dockit                                                       |  Humble
+   N      | https://forge.gluster.org/file-versioning                                              |  Shishir Gowda - No longer at Red Hat
+   Y      | https://forge.gluster.org/fio                                                          |  Huamin Chen (rootfs)
+   Y      | https://forge.gluster.org/fluent-plugin-glusterfs                                      |  Keisuke Takahashi
+   -      | https://forge.gluster.org/foreman-gluster                                   (no repos) |  -
+   Y      | https://forge.gluster.org/gant                                                         |  Kaushal
+   Y      | https://forge.gluster.org/gfapi-module-for-linux-target-driver-                        |  Dan Lambright
+   Y      | https://forge.gluster.org/gflocator                                                    |  Internet Institue of Japan
+   Y      | https://forge.gluster.org/glubix                                                       |  Hajime Taira
+   Y      | https://forge.gluster.org/glupy                                                        |  Justin Clift
+   -      | https://forge.gluster.org/gluster-client-juju-subordinate-charm             (no repos) |  -
+   Y      | https://forge.gluster.org/gluster-docs-project                                         |  [Several]
+   -      | https://forge.gluster.org/gluster-juju-charm                                (no repos) |  -
+   Y      | https://forge.gluster.org/gluster-meta-data-on-ssd                                     |  Dan Lambright
+   Y      | https://forge.gluster.org/glupkgmain-utils                                             |  Humble, Lala
+   Y      | https://forge.gluster.org/gluster-patch-acceptance-tests                               |  Justin Clift
+   Y      | https://forge.gluster.org/gluster-performance-stats-collection-and-analysis-tool       |  Neependra Khare
+   Y      | https://forge.gluster.org/gluster-deploy                                               |  Paul Cuzner
+   N      | https://forge.gluster.org/gluster-site                                                 |  -- Do we need to migrate this?
+   Y      | https://forge.gluster.org/glusterflow                                                  |  Justin Clift
+   -      | https://forge.gluster.org/glusterfs-graphics                        (no real contents) |  Justin Clift
+   -      | https://forge.gluster.org/glusterfs-netgroup-and-export-access-control      (no repos) |  -
+   Y      | https://forge.gluster.org/glusterfs-java-filesystem                                    |  Louis Zuckerman
+   Y      | https://forge.gluster.org/glusterfs-quota                                              |  Varun
+   Y      | https://forge.gluster.org/glusterfs-rackspace-regression-tester                        |  Justin Clift
+   Y      | https://forge.gluster.org/glusterfs-tools                                              |  Aravinda
+   Y      | https://forge.gluster.org/glusterfsiostat                                              |  Vipul
+   Y      | https://forge.gluster.org/glustergraph                                                 |  JJ Pavlik
+   Y      | https://forge.gluster.org/glusterinfo                                                  |  Wesley Duffee-Braun
+   -      | https://forge.gluster.org/glusteriostat                                     (no repos) |  -
+   Y      | https://forge.gluster.org/gogfapi                                                      |  Kaushal
+   Y      | https://forge.gluster.org/goo                                                          |  - No need to migrate
+   Y      | https://forge.gluster.org/gstatus                                                      |  Paul Cuzner
+   Y      | https://forge.gluster.org/gtop                                                         |  Paul Cuzner
+   Y      | https://forge.gluster.org/hadoop                                                       |  Bradley Childs, Jay Vyas, Steve Watt, Jon Cope
+   Y      | https://forge.gluster.org/libgfapi-java-io                                             |  Bradley Childs
+   Y      | https://forge.gluster.org/libgfapi-jni                                                 |  Louis Zuckerman
+   Y      | https://forge.gluster.org/libgfapi-python                                              |  Thiago
+   Y      | https://forge.gluster.org/libgfapi-ruby                                                |  Tomas Varaneckas
+   N      | https://forge.gluster.org/lsgvt                                                        |  Fred van Zwieten - No longer at Red Hat?
+   Y      | https://forge.gluster.org/mod_proxy_gluster                                            |  Niels de Vos
+   Y      | https://forge.gluster.org/nagios-monitoring                                            |  Kaleb
+   N      | https://forge.gluster.org/ndmp-server                                                  |  Shishir Gowda - No longer at Red Hat
+   Y      | https://forge.gluster.org/negative-lookup                                              |  Jeff Darcy
+   Y      | https://forge.gluster.org/new-style-replication                                        |  Jeff Darcy
+   N      | https://forge.gluster.org/nfs-ganesha-and-glusterfs-integration                        |
+   N      | https://forge.gluster.org/ovirt-integration                                            |
+   Y      | https://forge.gluster.org/performance                                                  |  Huamin Chen (rootfs)
+   Y      | https://forge.gluster.org/pmux                             (main pmux repo corrupted?) |  Internet Institue of Japan
+   N      | https://forge.gluster.org/probe-translator                                             |
+   N      | https://forge.gluster.org/puppet-gluster                                               |
+   N      | https://forge.gluster.org/puppet-glusterfs                                             |
+   Y      | https://forge.gluster.org/samba-glusterfs                                              |  Jose A. Rivera
+   N      | https://forge.gluster.org/smallfile-performance-testing                                |  John Mark, Ben England
+   N      | https://forge.gluster.org/snapshot                                                     |
+   N      | https://forge.gluster.org/splitmount                                                   |
+   N      | https://forge.gluster.org/swiftkerbauth                                                |
+   N      | https://forge.gluster.org/uwsgi                                                        |
+   Y      | https://forge.gluster.org/vagrant                                                      |  Jay Vyas
+   Y      | https://forge.gluster.org/wireshark                                                    |  Niels de Vos, Lala, MSV Bhat, Vikhyat
+   N      | https://forge.gluster.org/xlator-model-checker                                         |
+
 
