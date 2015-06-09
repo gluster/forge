@@ -7,6 +7,7 @@
 [gluster/glusterfs-patch-acceptance-tests]
 [gluster/glusterfs-rackspace-regression-tester]
 [gluster/glusterweb]
+[gluster/libgfapi-python]
 [gluster/planet-gluster]
 [gluster/samba-glusterfs]
 [gluster/vagrant]
