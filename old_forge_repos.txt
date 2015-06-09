@@ -50,7 +50,7 @@ Migrated  | Project                                                             
    N      | https://forge.gluster.org/libgfapi-java-io                                             |
    N      | https://forge.gluster.org/libgfapi-jni                                                 |
    N      | https://forge.gluster.org/libgfapi-python                                              |
-   N      | https://forge.gluster.org/libgfapi-ruby                                                |
+   Y      | https://forge.gluster.org/libgfapi-ruby                                                |  https://github.com/spajus/libgfapi-ruby
    N      | https://forge.gluster.org/lsgvt                                                        |
    N      | https://forge.gluster.org/mod_proxy_gluster                                            |
    N      | https://forge.gluster.org/nagios-monitoring                                            |
@@ -64,7 +64,7 @@ Migrated  | Project                                                             
    N      | https://forge.gluster.org/probe-translator                                             |
    Y      | https://forge.gluster.org/puppet-gluster                                               |  https://github.com/purpleidea/puppet-gluster
    N      | https://forge.gluster.org/puppet-glusterfs                                             |
-   N      | https://forge.gluster.org/samba-glusterfs                                              |
+   Y      | https://forge.gluster.org/samba-glusterfs                                              |  https://github.com/gluster/samba-glusterfs
    N      | https://forge.gluster.org/smallfile-performance-testing                                |
    N      | https://forge.gluster.org/snapshot                                                     |
    N      | https://forge.gluster.org/splitmount                                                   |

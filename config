@@ -8,6 +8,7 @@
 [gluster/glusterfs-rackspace-regression-tester]
 [gluster/glusterweb]
 [gluster/planet-gluster]
+[gluster/samba-glusterfs]
 [gluster/vagrant]
 [justinclift/glusterflow]
 [pblcache/pblcache]
@@ -16,3 +17,4 @@
 [pcuzner/gstatus]
 [pcuzner/vm2brick]
 [purpleidea/puppet-gluster]
+[spajus/libgfapi-ruby]
