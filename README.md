@@ -43,4 +43,4 @@ The '[config](https://github.com/gluster/forge/blob/master/config)' file holds t
     [pcuzner/gstatus]
     [purpleidea/puppet-gluster]
 
-To add further projects, just add them to this the file.
+To add further projects, just add them to this the file (keep it alphabetical).
