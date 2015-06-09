@@ -17,7 +17,7 @@ Migrated  | Project                                                             
    N      | https://forge.gluster.org/fio                                                          |
    N      | https://forge.gluster.org/fluent-plugin-glusterfs                                      |
    N      | https://forge.gluster.org/foreman-gluster                                              |
-   N      | https://forge.gluster.org/gant                                                         |  https://github.com/kshlm/gant
+   Y      | https://forge.gluster.org/gant                                                         |  https://github.com/kshlm/gant
    N      | https://forge.gluster.org/gfapi-module-for-linux-target-driver-                        |
    N      | https://forge.gluster.org/gflocator                                                    |
    N      | https://forge.gluster.org/glubix                                                       |
@@ -42,7 +42,7 @@ Migrated  | Project                                                             
    N      | https://forge.gluster.org/glustergraph                                                 |
    N      | https://forge.gluster.org/glusterinfo                                                  |
    N      | https://forge.gluster.org/glusteriostat                                                |
-   N      | https://forge.gluster.org/gogfapi                                                      | https://github.com/kshlm/gogfapi
+   Y      | https://forge.gluster.org/gogfapi                                                      | https://github.com/kshlm/gogfapi
    -      | https://forge.gluster.org/goo                                                          | - Doesn't need migrating
    Y      | https://forge.gluster.org/gstatus                                                      |  https://github.com/pcuzner/gstatus
    Y      | https://forge.gluster.org/gtop                                                         |  https://github.com/pcuzner/gluster-monitor
