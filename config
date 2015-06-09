@@ -11,6 +11,8 @@
 [gluster/samba-glusterfs]
 [gluster/vagrant]
 [justinclift/glusterflow]
+[kshlm/gant]
+[kshlm/gogfapi]
 [pblcache/pblcache]
 [pcuzner/gluster-deploy]
 [pcuzner/gluster-monitor]
