@@ -68,7 +68,7 @@ Migrated  | Project                                                             
    N      | https://forge.gluster.org/smallfile-performance-testing                                |
    N      | https://forge.gluster.org/snapshot                                                     |
    N      | https://forge.gluster.org/splitmount                                                   |
-   N      | https://forge.gluster.org/swiftkerbauth                                                |
+   -      | https://forge.gluster.org/swiftkerbauth                                                |  - Doesn't need migrating
    N      | https://forge.gluster.org/uwsgi                                                        |
    N      | https://forge.gluster.org/vagrant                                                      |
    N      | https://forge.gluster.org/wireshark                                                    |  Niels will probably migrate this
