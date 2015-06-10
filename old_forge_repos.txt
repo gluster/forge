@@ -1,39 +1,39 @@
 Migrated  | Project                                                                                |  GitHub URL
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
    Y      | https://forge.gluster.org/glusterfs-core                                               |  https://github.com/gluster/glusterfs
-   N      | https://forge.gluster.org/bareos                                                       |
-   N      | https://forge.gluster.org/bugzappers                                                   |
+   -      | https://forge.gluster.org/bareos                                                       |  - Doesn't need migrating
+   N      | https://forge.gluster.org/bugzappers                                                   |  Niels will probably migrate this
    N      | https://forge.gluster.org/cdc                                                          |
    N      | https://forge.gluster.org/clang-compiled-glusterfs                                     |
-   N      | https://forge.gluster.org/cloudstack-gluster                                           |
-   N      | https://forge.gluster.org/compliance                                                   |
+   -      | https://forge.gluster.org/cloudstack-gluster                                           |  - Doesn't need migrating
+   -      | https://forge.gluster.org/compliance                                                   |  - Doesn't need migrating
    N      | https://forge.gluster.org/ctdb-ec2                                                     |
-   N      | https://forge.gluster.org/data-classification                                          |
-   N      | https://forge.gluster.org/disperse                                                     |
+   -      | https://forge.gluster.org/data-classification                                          |  - Doesn't need migrating
+   -      | https://forge.gluster.org/disperse                                                     |  - Doesn't need migrating
    N      | https://forge.gluster.org/distributed-geo-rep                                          |
    N      | https://forge.gluster.org/dockerized-glusterfs                                         |
    N      | https://forge.gluster.org/dockit                                                       |
    N      | https://forge.gluster.org/file-versioning                                              |
    N      | https://forge.gluster.org/fio                                                          |
    N      | https://forge.gluster.org/fluent-plugin-glusterfs                                      |
-   N      | https://forge.gluster.org/foreman-gluster                                              |
+   -      | https://forge.gluster.org/foreman-gluster                                              |  - Doesn't need migrating
    Y      | https://forge.gluster.org/gant                                                         |  https://github.com/kshlm/gant
-   N      | https://forge.gluster.org/gfapi-module-for-linux-target-driver-                        |
+   -      | https://forge.gluster.org/gfapi-module-for-linux-target-driver-                        |  - Doesn't need migrating
    N      | https://forge.gluster.org/gflocator                                                    |
    N      | https://forge.gluster.org/glubix                                                       |
    Y      | https://forge.gluster.org/glupy                                                        |  https://github.com/gluster/glupy
-   N      | https://forge.gluster.org/gluster-client-juju-subordinate-charm                        |
-   N      | https://forge.gluster.org/gluster-docs-project                                         |
-   N      | https://forge.gluster.org/gluster-juju-charm                                           |
-   N      | https://forge.gluster.org/gluster-meta-data-on-ssd                                     |
+   -      | https://forge.gluster.org/gluster-client-juju-subordinate-charm                        |  - Doesn't need migrating
+   -      | https://forge.gluster.org/gluster-docs-project                                         |  - Doesn't need migrating
+   -      | https://forge.gluster.org/gluster-juju-charm                                           |  - Doesn't need migrating
+   -      | https://forge.gluster.org/gluster-meta-data-on-ssd                                     |  - Doesn't need migrating
    N      | https://forge.gluster.org/glupkgmain-utils                                             |
    Y      | https://forge.gluster.org/gluster-patch-acceptance-tests                               |  https://github.com/gluster/glusterfs-patch-acceptance-tests
    N      | https://forge.gluster.org/gluster-performance-stats-collection-and-analysis-tool       |
    Y      | https://forge.gluster.org/gluster-deploy                                               |  https://github.com/pcuzner/gluster-deploy
    N      | https://forge.gluster.org/gluster-site                                                 |  -- Do we need to migrate this?
    Y      | https://forge.gluster.org/glusterflow                                                  |  https://github.com/justinclift/glusterflow
-   -      | https://forge.gluster.org/glusterfs-graphics                                           |  -
-   -      | https://forge.gluster.org/glusterfs-netgroup-and-export-access-control                 |  -
+   -      | https://forge.gluster.org/glusterfs-graphics                                           |  - Doesn't need migrating
+   -      | https://forge.gluster.org/glusterfs-netgroup-and-export-access-control                 |  - Doesn't need migrating
    N      | https://forge.gluster.org/glusterfs-java-filesystem                                    |
    N      | https://forge.gluster.org/glusterfs-quota                                              |
    N      | https://forge.gluster.org/glusterfs-rackspace-regression-tester                        |
@@ -42,18 +42,18 @@ Migrated  | Project                                                             
    N      | https://forge.gluster.org/glustergraph                                                 |
    N      | https://forge.gluster.org/glusterinfo                                                  |
    N      | https://forge.gluster.org/glusteriostat                                                |
-   Y      | https://forge.gluster.org/gogfapi                                                      | https://github.com/kshlm/gogfapi
-   -      | https://forge.gluster.org/goo                                                          | - Doesn't need migrating
+   Y      | https://forge.gluster.org/gogfapi                                                      |  https://github.com/kshlm/gogfapi
+   -      | https://forge.gluster.org/goo                                                          |  - Doesn't need migrating
    Y      | https://forge.gluster.org/gstatus                                                      |  https://github.com/pcuzner/gstatus
    Y      | https://forge.gluster.org/gtop                                                         |  https://github.com/pcuzner/gluster-monitor
-   N      | https://forge.gluster.org/hadoop                                                       |
-   N      | https://forge.gluster.org/libgfapi-java-io                                             |
+   Y      | https://forge.gluster.org/hadoop                                                       |  https://github.com/gluster/glusterfs-hadoop
+   Y      | https://forge.gluster.org/libgfapi-java-io                                             |  https://github.com/gluster/libgfapi-java-io
    N      | https://forge.gluster.org/libgfapi-jni                                                 |
-   N      | https://forge.gluster.org/libgfapi-python                                              |
+   Y      | https://forge.gluster.org/libgfapi-python                                              |  https://github.com/gluster/libgfapi-python
    Y      | https://forge.gluster.org/libgfapi-ruby                                                |  https://github.com/spajus/libgfapi-ruby
    N      | https://forge.gluster.org/lsgvt                                                        |
-   N      | https://forge.gluster.org/mod_proxy_gluster                                            |
-   N      | https://forge.gluster.org/nagios-monitoring                                            |
+   N      | https://forge.gluster.org/mod_proxy_gluster                                            |  Niels will probably migrate this
+   -      | https://forge.gluster.org/nagios-monitoring                                            |  - Doesn't need migrating
    N      | https://forge.gluster.org/ndmp-server                                                  |
    N      | https://forge.gluster.org/negative-lookup                                              |
    N      | https://forge.gluster.org/new-style-replication                                        |
@@ -71,7 +71,7 @@ Migrated  | Project                                                             
    N      | https://forge.gluster.org/swiftkerbauth                                                |
    N      | https://forge.gluster.org/uwsgi                                                        |
    N      | https://forge.gluster.org/vagrant                                                      |
-   N      | https://forge.gluster.org/wireshark                                                    |
+   N      | https://forge.gluster.org/wireshark                                                    |  Niels will probably migrate this
    N      | https://forge.gluster.org/xlator-model-checker                                         |
 
 
