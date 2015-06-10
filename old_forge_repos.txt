@@ -136,21 +136,21 @@ Contacted | Project                                                             
    N      | https://forge.gluster.org/ndmp-server                                                  |  Shishir Gowda - No longer at Red Hat
    Y      | https://forge.gluster.org/negative-lookup                                              |  Jeff Darcy
    Y      | https://forge.gluster.org/new-style-replication                                        |  Jeff Darcy
-   N      | https://forge.gluster.org/nfs-ganesha-and-glusterfs-integration                        |
-   N      | https://forge.gluster.org/ovirt-integration                                            |
+   Y      | https://forge.gluster.org/nfs-ganesha-and-glusterfs-integration                        |  Anand Subramanian
+   -      | https://forge.gluster.org/ovirt-integration                         (no real contents) |
    Y      | https://forge.gluster.org/performance                                                  |  Huamin Chen (rootfs)
    Y      | https://forge.gluster.org/pmux                             (main pmux repo corrupted?) |  Internet Institue of Japan
-   N      | https://forge.gluster.org/probe-translator                                             |
-   N      | https://forge.gluster.org/puppet-gluster                                               |
-   N      | https://forge.gluster.org/puppet-glusterfs                                             |
+   Y      | https://forge.gluster.org/probe-translator                                             |  Luis Pabon
+   Y      | https://forge.gluster.org/puppet-gluster                                               |  James Shubin
+   -      | https://forge.gluster.org/puppet-glusterfs                                  (no repos) |  -
    Y      | https://forge.gluster.org/samba-glusterfs                                              |  Jose A. Rivera
    N      | https://forge.gluster.org/smallfile-performance-testing                                |  John Mark, Ben England
-   N      | https://forge.gluster.org/snapshot                                                     |
-   N      | https://forge.gluster.org/splitmount                                                   |
-   N      | https://forge.gluster.org/swiftkerbauth                                                |
-   N      | https://forge.gluster.org/uwsgi                                                        |
+   Y      | https://forge.gluster.org/snapshot                                                     |  Avra Sengupta, Raghavendra Bhat, Sachin Pandit, Rajesh Joseph
+   Y      | https://forge.gluster.org/splitmount                                                   |  Joe Julian
+   Y      | https://forge.gluster.org/swiftkerbauth                                                |  Luis Pabon, Carsten Clasohm
+   Y      | https://forge.gluster.org/uwsgi                                                        |  Roberto De Ioris
    Y      | https://forge.gluster.org/vagrant                                                      |  Jay Vyas
    Y      | https://forge.gluster.org/wireshark                                                    |  Niels de Vos, Lala, MSV Bhat, Vikhyat
-   N      | https://forge.gluster.org/xlator-model-checker                                         |
+   -      | https://forge.gluster.org/xlator-model-checker                              (no repos) |  -
 
 
