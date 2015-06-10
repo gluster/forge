@@ -13,6 +13,7 @@
 [gluster/samba-glusterfs]
 [gluster/vagrant]
 [htaira/glubix]
+[joejulian/glusterfs-splitbrain]
 [justinclift/glusterflow]
 [kshlm/gant]
 [kshlm/gogfapi]

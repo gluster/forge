@@ -67,7 +67,7 @@ Migrated  | Project                                                             
    Y      | https://forge.gluster.org/samba-glusterfs                                              |  https://github.com/gluster/samba-glusterfs
    N      | https://forge.gluster.org/smallfile-performance-testing                                |
    N      | https://forge.gluster.org/snapshot                                                     |
-   N      | https://forge.gluster.org/splitmount                                                   |
+   Y      | https://forge.gluster.org/splitmount                                                   |  https://github.com/joejulian/glusterfs-splitbrain
    -      | https://forge.gluster.org/swiftkerbauth                                                |  - Doesn't need migrating
    N      | https://forge.gluster.org/uwsgi                                                        |
    N      | https://forge.gluster.org/vagrant                                                      |
