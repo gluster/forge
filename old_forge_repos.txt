@@ -20,7 +20,7 @@ Migrated  | Project                                                             
    Y      | https://forge.gluster.org/gant                                                         |  https://github.com/kshlm/gant
    -      | https://forge.gluster.org/gfapi-module-for-linux-target-driver-                        |  - Doesn't need migrating
    N      | https://forge.gluster.org/gflocator                                                    |
-   N      | https://forge.gluster.org/glubix                                                       |
+   Y      | https://forge.gluster.org/glubix                                                       |  https://github.com/htaira/glubix
    Y      | https://forge.gluster.org/glupy                                                        |  https://github.com/gluster/glupy
    -      | https://forge.gluster.org/gluster-client-juju-subordinate-charm                        |  - Doesn't need migrating
    -      | https://forge.gluster.org/gluster-docs-project                                         |  - Doesn't need migrating

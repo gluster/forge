@@ -12,6 +12,7 @@
 [gluster/planet-gluster]
 [gluster/samba-glusterfs]
 [gluster/vagrant]
+[htaira/glubix]
 [justinclift/glusterflow]
 [kshlm/gant]
 [kshlm/gogfapi]
