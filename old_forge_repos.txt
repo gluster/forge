@@ -38,7 +38,7 @@ Migrated  | Project                                                             
    N      | https://forge.gluster.org/glusterfs-quota                                              |
    N      | https://forge.gluster.org/glusterfs-rackspace-regression-tester                        |
    N      | https://forge.gluster.org/glusterfs-tools                                              |
-   N      | https://forge.gluster.org/glusterfsiostat                                              |
+   Y      | https://forge.gluster.org/glusterfsiostat                                              |  https://github.com/gluster/glusterfsiostat
    N      | https://forge.gluster.org/glustergraph                                                 |
    N      | https://forge.gluster.org/glusterinfo                                                  |
    N      | https://forge.gluster.org/glusteriostat                                                |
