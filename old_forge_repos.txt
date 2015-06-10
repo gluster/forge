@@ -58,12 +58,12 @@ Migrated  | Project                                                             
    N      | https://forge.gluster.org/negative-lookup                                              |
    N      | https://forge.gluster.org/new-style-replication                                        |
    N      | https://forge.gluster.org/nfs-ganesha-and-glusterfs-integration                        |
-   N      | https://forge.gluster.org/ovirt-integration                                            |
+   -      | https://forge.gluster.org/ovirt-integration                                            |  - Doesn't need migrating
    N      | https://forge.gluster.org/performance                                                  |
    N      | https://forge.gluster.org/pmux                                                         |
    N      | https://forge.gluster.org/probe-translator                                             |
    Y      | https://forge.gluster.org/puppet-gluster                                               |  https://github.com/purpleidea/puppet-gluster
-   N      | https://forge.gluster.org/puppet-glusterfs                                             |
+   -      | https://forge.gluster.org/puppet-glusterfs                                             |  - Doesn't need migrating
    Y      | https://forge.gluster.org/samba-glusterfs                                              |  https://github.com/gluster/samba-glusterfs
    N      | https://forge.gluster.org/smallfile-performance-testing                                |
    N      | https://forge.gluster.org/snapshot                                                     |
@@ -72,7 +72,7 @@ Migrated  | Project                                                             
    N      | https://forge.gluster.org/uwsgi                                                        |
    N      | https://forge.gluster.org/vagrant                                                      |
    N      | https://forge.gluster.org/wireshark                                                    |  Niels will probably migrate this
-   N      | https://forge.gluster.org/xlator-model-checker                                         |
+   -      | https://forge.gluster.org/xlator-model-checker                                         |  - Doesn't need migrating
 
 
 ## Users to contact ##
