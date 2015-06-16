@@ -30,6 +30,7 @@ DB structure:
 
 from datetime import datetime
 import os, os.path, sys, ConfigParser
+import subprocess
 import sqlite3
 from pygit2 import clone_repository, Repository, GIT_SORT_TIME, GIT_SORT_REVERSE
 
@@ -86,8 +87,6 @@ for repo_name in config.sections():
         local_dir = os.path.join(base_path, 'repos', repo_name + '.git')
         repo = Repository(local_dir)
 
-        # TODO: We should prune local branches no longer present on the origin.  Maybe run a "git gc" too
-
         # Fetch the latest commits (equivalent to "git fetch origin")
         progress = repo.remotes["origin"].fetch()
 
@@ -96,6 +95,16 @@ for repo_name in config.sections():
         head = repo.head
         fetch_head = repo.lookup_reference('FETCH_HEAD')
         new_head = head.set_target(fetch_head.target)
+
+        # Notice new branches added to the origin
+        os.chdir(local_dir)
+        update_result = subprocess.call(["git", "remote", "update", "origin"])
+
+        # Prune local branches no longer present on the origin
+        prune_result = subprocess.call(["git", "remote", "prune", "origin"])
+
+        # Run git gc, to stop potential unlimited repo growth from accumulating dead objects over time
+        gc_result = subprocess.call(["git", "gc"])
 
     except KeyError:
 
