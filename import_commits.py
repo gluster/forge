@@ -4,15 +4,36 @@
 Adds each commit, from each branch, into a database for cross-repo analysis
 
 Requires the Python SQLite3 and PyGit2 modules
+
+DB structure:
+  + repo table
+      repo_id : int
+      name : text
+  + people table
+      people_id : int (auto-incremented value, created by the database on each insert of NULL for this field)
+      name : text
+      email : text
+  + commits table
+      commit_id : int
+      commit_time : text (only accurate to the second)
+      repo : int (should have a foreign constraint ensuring it's in the repo table)
+      author: int (should have a foreign constraint ensuring it's in the people table)
+      hash : text (long hash.  Should be unique in a given repo, but may not be when several repos are considered)
+      message : text (the commit message)
 """
+
+# TODO: At the moment the code doesn't select any particular branch.  So find out if it's selecting only from master,
+#       or if it's selecting across all branches.  Then make sure all commits (across all branches) are captured
+# TODO: Detect repos newly added to the config file, automatically clone them locally, process them, then (maybe: TBD)
+#       remove the local clone
 
 from datetime import datetime
 import os, os.path
 import sqlite3
 from pygit2 import Repository, GIT_SORT_TIME, GIT_SORT_REVERSE
 
-# Enable this to have the results printed to stdout
-debug = True
+# Set to False to turn of debugging info.  Set to 1 for git log style output. Set to 2 for commit insert info only
+debug = 2
 
 # Hard coded repo for initial development.  Will be read from the main config file
 repo_name = 'gluster/glusterfs'
@@ -26,22 +47,6 @@ conn = sqlite3.connect(db_path)
 # Connect to the database
 c = conn.cursor()
 
-# DB structure:
-#   + repo
-#       repo_id : int
-#       name : text
-#   + people table
-#       people_id : int (auto-incremented value, created by the database on each insert of NULL for this field)
-#       name : text
-#       email : text
-#   + commits table
-#       commit_id : int
-#       commit_time : text (only accurate to the second)
-#       repo : int (should have a foreign constraint ensuring it's in the repo table)
-#       author: int (should have a foreign constraint ensuring it's in the people table)
-#       hash : text (long hash.  Should be unique in a given repo, but may not be when several repos are considered)
-#       message : text (the commit message)
-
 # Create the database tables to store the commit info, if they're not already present
 sql = ('CREATE TABLE IF NOT EXISTS repo (repo_id INTEGER PRIMARY KEY, name TEXT)')
 c.execute(sql)
@@ -53,9 +58,6 @@ sql = ('CREATE TABLE IF NOT EXISTS commits (commit_id INTEGER PRIMARY KEY, commi
        'author INTEGER, hash TEXT, message TEXT)')
 c.execute(sql)
 conn.commit()
-
-# TODO: Detect repos newly added to the config file, automatically clone them locally, process them, then (maybe: TBD)
-#       remove the local clone
 
 # Open the local repo
 repo = Repository(repo_path)
@@ -78,37 +80,57 @@ else:
 
 # Starting with the oldest commit in the repo, add all commits to the database
 for commit in repo.walk(repo.head.target, GIT_SORT_TIME | GIT_SORT_REVERSE):
+
     # If requested, display the commit info for debugging purposes
-    if debug:
+    if debug == 1:
         print "commit {0}".format(commit.hex)
         print "Author: {0} <{1}>".format(unicode(commit.author.name).encode("utf-8"), commit.author.email)
         print datetime.utcfromtimestamp(commit.commit_time).strftime('Date:   %Y-%m-%d %H:%M:%S\n')
         print "   {0}".format(unicode(commit.message).encode("utf-8"))
 
-    # TODO: Check if the commit already exists in the database.  Don't add it if its already there
-
-    # Check if the author already exists in the database
-    sql = 'SELECT people_id, email FROM people WHERE email = :email_addr'
-    c.execute(sql, {"email_addr": commit.author.email})
+    # Check if the commit already exists in the database.  Don't add it if its already there
+    sql = 'SELECT commit_id, hash FROM commits WHERE repo = :repo AND hash = :hash'
+    c.execute(sql, {"repo": repo_id, "hash": commit.hex})
     result = c.fetchall()
     if len(result) > 0:
-        # The unique id # for the author in the database
-        author_id = result[0][0]
+
+        # If requested, show debugging info
+        if debug == 2:
+            print "Commit already present in the database"
+
     else:
-        # The author isn't in the database yet, so we add them
-        sql = 'INSERT INTO people (people_id, name, email) VALUES (NULL, :author_name, :email_addr)'
-        c.execute(sql, {"author_name": commit.author.name, "email_addr": commit.author.email})
+        ### The commit isn't yet in the database, so add it
+
+        # Check if the author already exists in the database
+        sql = 'SELECT people_id, email FROM people WHERE email = :email_addr'
+        c.execute(sql, {"email_addr": commit.author.email})
+        result = c.fetchall()
+        if len(result) > 0:
+            # The unique id # for the author in the database
+            author_id = result[0][0]
+        else:
+            # The author isn't in the database yet, so we add them
+            sql = 'INSERT INTO people (people_id, name, email) VALUES (NULL, :author_name, :email_addr)'
+            c.execute(sql, {"author_name": commit.author.name, "email_addr": commit.author.email})
+            conn.commit()
+
+            # Retrieve the people_id value generated by the database for the above insert
+            author_id = c.lastrowid
+
+            # If requested, show debugging info
+            if debug == 2:
+                print "Author {0} added to database".format(unicode(commit.author.name).encode("utf-8"))
+
+        # Insert the commit data into the database
+        sql = ('INSERT INTO commits (commit_id, commit_time, repo, author, hash, message) VALUES '
+               '(NULL, :commit_time, :repo, :author, :hash, :message)')
+        c.execute(sql, {"commit_time": datetime.utcfromtimestamp(commit.commit_time).strftime('%Y-%m-%d %H:%M:%S'),
+                        "repo": repo_id, "author": author_id, "hash": commit.hex, "message":commit.message})
         conn.commit()
 
-        # Retrieve the people_id value generated by the database for the above insert
-        author_id = c.lastrowid
-
-    # Insert the commit data into the database
-    sql = ('INSERT INTO commits (commit_id, commit_time, repo, author, hash, message) VALUES '
-           '(NULL, :commit_time, :repo, :author, :hash, :message)')
-    c.execute(sql, {"commit_time": datetime.utcfromtimestamp(commit.commit_time).strftime('%Y-%m-%d %H:%M:%S'),
-                    "repo": repo_id, "author": author_id, "hash": commit.hex, "message":commit.message})
-    conn.commit()
+        # If requested, show debugging info
+        if debug == 2:
+            print "Commit {0} added to database".format(commit.hex)
 
 # Close the database connection
 c.close()
