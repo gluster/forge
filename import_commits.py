@@ -24,15 +24,17 @@ DB structure:
 
 # TODO: At the moment the code doesn't select any particular branch.  So find out if it's selecting only from master,
 #       or if it's selecting across all branches.  Then make sure all commits (across all branches) are captured
+#       Seems like the info needed is here: http://www.pygit2.org/references.html
 # TODO: Detect repos newly added to the config file, automatically clone them locally, process them, then (maybe: TBD)
 #       remove the local clone
 
 from datetime import datetime
-import os, os.path, ConfigParser
+import os, os.path, sys, ConfigParser
 import sqlite3
 from pygit2 import clone_repository, Repository, GIT_SORT_TIME, GIT_SORT_REVERSE
 
 # Set to False to turn off debugging info.  Set to 1 for git log style output. Set to 2 for commit insert info only
+# TODO: Turn this into a bitmask using defined constants, for more fine grained control of debug output
 debug = 2
 
 # Read the GitHub projects from the ./config file
@@ -63,10 +65,33 @@ conn.commit()
 # Loop through the projects in the config file
 for repo_name in config.sections():
 
-    # Clone the repo locally from GitHub
-    repo_url = 'https://github.com/' + repo_name + '.git'
-    local_dir = os.path.join(base_path, 'repos', repo_name + '.git')
-    repo = clone_repository(repo_url, local_dir, bare = True)
+    # Attempt to open an existing local repo
+    try:
+        local_dir = os.path.join(base_path, 'repos', repo_name + '.git')
+        repo = Repository(local_dir)
+
+        # TODO: We should prune local branches no longer present on the origin.  Maybe run a "git gc" too
+
+        # Fetch the latest commits (equivalent to "git fetch origin")
+        progress = repo.remotes["origin"].fetch()
+
+        # Update HEAD with the new commits (equivalent to "git update-ref HEAD FETCH_HEAD")
+        # TODO: This should be tweaked to update all branches, not just the default one
+        head = repo.head
+        fetch_head = repo.lookup_reference('FETCH_HEAD')
+        new_head = head.set_target(fetch_head.target)
+
+    except KeyError:
+
+        # Opening a local repo failed, so we assume it's not been cloned yet.  Do the cloning now
+        repo_url = 'https://github.com/' + repo_name + '.git'
+        repo = clone_repository(repo_url, local_dir, bare = True)
+
+    except Exception, e:
+
+        # Exit on all other exceptions
+        print "An unknown error occurred on the {0} repo:\n\n\t{1}".format(repo_name, e.message)
+        sys.exit(1)
 
     # Check if the repo is already in the database
     sql = 'SELECT repo_id, name FROM repo WHERE name = :repo_name'
@@ -102,7 +127,7 @@ for repo_name in config.sections():
 
             # If requested, show debugging info
             if debug == 2:
-                print "Commit already present in the database"
+                print "{0} - Commit {1} already present in the database".format(repo_name, commit.hex)
 
         else:
             ### The commit isn't yet in the database, so add it
@@ -125,7 +150,7 @@ for repo_name in config.sections():
 
                 # If requested, show debugging info
                 if debug == 2:
-                    print "Author {0} added to database".format(unicode(commit.author.name).encode("utf-8"))
+                    print "{0} - Author {1} added to database".format(repo_name, unicode(commit.author.name).encode("utf-8"))
 
             # Insert the commit data into the database
             sql = ('INSERT INTO commits (commit_id, commit_time, repo, author, hash, message) VALUES '
@@ -136,7 +161,7 @@ for repo_name in config.sections():
 
             # If requested, show debugging info
             if debug == 2:
-                print "Commit {0} added to database".format(commit.hex)
+                print "{0} - Commit {1} added to database".format(repo_name, commit.hex)
 
 # Close the database connection
 c.close()
