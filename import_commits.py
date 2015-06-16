@@ -136,7 +136,7 @@ for repo_name in config.sections():
             if debug == 1:
                 print "commit {0}".format(commit.hex)
                 print "Author: {0} <{1}>".format(unicode(commit.author.name).encode("utf-8"), commit.author.email)
-                print datetime.utcfromtimestamp(commit.commit_time).strftime('Date:   %Y-%m-%d %H:%M:%S\n')
+                print datetime.utcfromtimestamp(commit.commit_time).strftime('Date:   %a %b %d %H:%M:%S %Y +0000\n')
                 print "   {0}".format(unicode(commit.message).encode("utf-8"))
 
             # Check if the commit already exists in the database.  Don't add it if its already there
