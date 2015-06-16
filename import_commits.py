@@ -51,16 +51,32 @@ conn = sqlite3.connect(db_path)
 c = conn.cursor()
 
 # Create the database tables to store the commit info, if they're not already present
-sql = ('CREATE TABLE IF NOT EXISTS repo (repo_id INTEGER PRIMARY KEY, name TEXT)')
+sql = 'CREATE TABLE IF NOT EXISTS repo (repo_id INTEGER PRIMARY KEY, name TEXT)'
 c.execute(sql)
 
-sql = ('CREATE TABLE IF NOT EXISTS people (people_id INTEGER PRIMARY KEY, name TEXT, email TEXT)')
+sql = 'CREATE TABLE IF NOT EXISTS people (people_id INTEGER PRIMARY KEY, name TEXT, email TEXT)'
 c.execute(sql)
 
-sql = ('CREATE TABLE IF NOT EXISTS commits (commit_id INTEGER PRIMARY KEY, commit_time TEXT, repo INTEGER, '
-       'author INTEGER, hash TEXT, message TEXT)')
+sql = 'CREATE TABLE IF NOT EXISTS commits (commit_id INTEGER PRIMARY KEY, commit_time TEXT, repo INTEGER, ' \
+       'author INTEGER, hash TEXT, message TEXT)'
 c.execute(sql)
 conn.commit()
+
+# Create indices for the tables, if they're not already present
+sql = 'CREATE INDEX IF NOT EXISTS people_email ON people (email)'
+c.execute(sql)
+
+sql = 'CREATE INDEX IF NOT EXISTS commits_time ON commits (commit_time)'
+c.execute(sql)
+
+sql = 'CREATE INDEX IF NOT EXISTS commits_hash ON commits (hash)'
+c.execute(sql)
+
+sql = 'CREATE INDEX IF NOT EXISTS commits_author ON commits (author)'
+c.execute(sql)
+
+conn.commit()
+
 
 # Loop through the projects in the config file
 for repo_name in config.sections():
