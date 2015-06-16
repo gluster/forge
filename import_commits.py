@@ -32,7 +32,7 @@ import os, os.path, ConfigParser
 import sqlite3
 from pygit2 import clone_repository, Repository, GIT_SORT_TIME, GIT_SORT_REVERSE
 
-# Set to False to turn of debugging info.  Set to 1 for git log style output. Set to 2 for commit insert info only
+# Set to False to turn off debugging info.  Set to 1 for git log style output. Set to 2 for commit insert info only
 debug = 2
 
 # Read the GitHub projects from the ./config file
