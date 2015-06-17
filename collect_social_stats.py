@@ -40,7 +40,7 @@ c = conn.cursor()
 
 # Create the SQLite3 table to store the info, if it's not already present
 sql = ('CREATE TABLE IF NOT EXISTS social_stats (project TEXT, time_stamp TEXT, '
-       'watchers INTEGER, stars INTEGER, forks INTEGER, commits INTEGER, downloads INTEGER)')
+       'watchers INTEGER, stars INTEGER, forks INTEGER, downloads INTEGER)')
 c.execute(sql)
 conn.commit()
 
@@ -52,12 +52,6 @@ for project in config.sections():
     watchers = repo_data['subscribers_count']
     stars = repo_data['stargazers_count']
     forks = repo_data['forks_count']
-
-    # Count the # of commits in the last 24 hours
-    now = datetime.datetime.utcnow()
-    yesterday = now + datetime.timedelta(days=-1)
-    commits = gh.repos(project).commits.get(since=yesterday)
-    commits_count = len(commits)
 
     # Count how many downloads have occurred (ever) for the project
     # Note - For each project there is an outer loop of "releases" (eg v3.6.0), with an inner loop of "assets" inside
@@ -72,13 +66,14 @@ for project in config.sections():
     # Print the results to stdout
     if debug:
         print ('{0}\n\tcommits: {1}\twatchers: {2}\tstars: {3}\tforks: {4}\t'
-               'downloads: {5}\n'.format(project, commits_count, watchers, stars, forks, download_counter))
+               'downloads: {5}\n'.format(project, watchers, stars, forks, download_counter))
 
     # Add the results to the database
+    now = datetime.datetime.utcnow()
     sql = ('INSERT INTO social_stats (project, time_stamp, watchers, stars, forks, commits, downloads) VALUES '
-           '(:project, :now, :watchers, :stars, :forks, :commits_count, :download_counter)')
+           '(:project, :now, :watchers, :stars, :forks, :download_counter)')
     c.execute(sql, {"project": project, "now": now, "watchers": watchers, "stars": stars, "forks": forks,
-                    "commits_count": commits_count, "download_counter": download_counter})
+                    "download_counter": download_counter})
     conn.commit()
 
 # Close the database connection
