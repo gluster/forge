@@ -58,3 +58,7 @@ target/
 
 # PyCharm
 .idea/
+
+# Database and repo dirs
+db/
+repos/
