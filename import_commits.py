@@ -30,7 +30,7 @@ from pygit2 import clone_repository, Repository, GIT_BRANCH_REMOTE, GIT_SORT_REV
 
 # Set to False to turn off debugging info.  Set to 1 for git log style output. Set to 2 for commit insert info only
 # TODO: Turn this into a bitmask using defined constants, for more fine grained control of debug output
-debug = 2
+debug = 3
 
 # Read the GitHub projects from the ./config file
 base_path = os.path.dirname(os.path.realpath(__file__))
@@ -180,7 +180,7 @@ for repo_name in config.sections():
                 conn.commit()
 
                 # If requested, show debugging info
-                if debug == 2:
+                if (debug == 2) or (debug == 3):
                     print "{0} - Commit {1} added to database".format(repo_name, commit.hex)
 
 # Close the database connection
