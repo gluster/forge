@@ -76,9 +76,9 @@ for project in config.sections():
 
     # Add the results to the database
     sql = ('INSERT INTO social_stats (project, time_stamp, watchers, stars, forks, commits, downloads) VALUES '
-           "('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')").format(project, now, watchers, stars, forks,
-                                                                       commits_count, download_counter)
-    c.execute(sql)
+           '(:project, :now, :watchers, :stars, :forks, :commits_count, :download_counter)')
+    c.execute(sql, {"project": project, "now": now, "watchers": watchers, "stars": stars, "forks": forks,
+                    "commits_count": commits_count, "download_counter": download_counter})
     conn.commit()
 
 # Close the database connection
