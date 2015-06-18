@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """Collect the latest social stats for Gluster projects
 
-Grabs watchers, stars, forks, # of commits per day, and total number of downloads (ever).
+Grabs watchers, stars, forks, and total number of downloads (ever).
 
 Requires the SQLite3 Python module, and githubpy
 
@@ -39,10 +39,18 @@ conn = sqlite3.connect(db_path)
 c = conn.cursor()
 
 # Create the SQLite3 table to store the info, if it's not already present
-sql = ('CREATE TABLE IF NOT EXISTS social_stats (project TEXT, time_stamp TEXT, '
-       'watchers INTEGER, stars INTEGER, forks INTEGER, downloads INTEGER)')
+sql = 'CREATE TABLE IF NOT EXISTS social_stats (project TEXT, time_stamp TEXT, watchers INTEGER, stars INTEGER, ' \
+      'forks INTEGER, downloads INTEGER)'
 c.execute(sql)
 conn.commit()
+
+## SQL to fix previous schema problems
+
+
+# Create indices for the table, if not already present
+sql = 'CREATE INDEX IF NOT EXISTS social_stats_time_stamp ON social_stats (time_stamp)'
+c.execute(sql)
+
 
 # Loop through the projects in the config file
 for project in config.sections():
@@ -65,12 +73,12 @@ for project in config.sections():
 
     # Print the results to stdout
     if debug:
-        print ('{0}\n\tcommits: {1}\twatchers: {2}\tstars: {3}\tforks: {4}\t'
-               'downloads: {5}\n'.format(project, watchers, stars, forks, download_counter))
+        print ('{0}\n\twatchers: {1}\tstars: {2}\tforks: {3}\t'
+               'downloads: {4}\n'.format(project, watchers, stars, forks, download_counter))
 
     # Add the results to the database
     now = datetime.datetime.utcnow()
-    sql = ('INSERT INTO social_stats (project, time_stamp, watchers, stars, forks, commits, downloads) VALUES '
+    sql = ('INSERT INTO social_stats (project, time_stamp, watchers, stars, forks, downloads) VALUES '
            '(:project, :now, :watchers, :stars, :forks, :download_counter)')
     c.execute(sql, {"project": project, "now": now, "watchers": watchers, "stars": stars, "forks": forks,
                     "download_counter": download_counter})
